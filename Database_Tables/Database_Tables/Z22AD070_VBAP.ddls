@@ -1,0 +1,27 @@
+@EndUserText.label : 'Sales Order Items - 22AD070' 
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE 
+@AbapCatalog.tableCategory : #TRANSPARENT 
+@AbapCatalog.deliveryClass : #A 
+@AbapCatalog.dataMaintenance : #RESTRICTED 
+define table z22ad070_vbap { 
+   key client            : abap.clnt not null; 
+  @AbapCatalog.foreignKey.label : 'Sales Header Link' 
+  @AbapCatalog.foreignKey.screenCheck : false 
+  key salesdocument     : z22ad070_de_sorder not null 
+    with foreign key [0..*,1] z22ad070_vbak 
+      where salesdocument = z22ad070_vbap.salesdocument; 
+  key salesitemnumber   : abap.int2 not null; 
+  material              : abap.char(18); 
+  plant                 : abap.char(4); 
+  @Semantics.quantity.unitOfMeasure : 'z22ad070_vbap.quantityunits' 
+  quantity              : abap.quan(13,3); 
+  quantityunits         : abap.unit(3); 
+  local_created_by      : abp_creation_user; 
+  local_created_at      : abp_creation_tstmpl; 
+  local_last_changed_by : abp_locinst_lastchange_user; 
+  local_last_changed_at : abp_locinst_lastchange_tstmpl; 
+  last_changed_at       : abp_lastchange_tstmpl; 
+} 
+
+
+Add sales order item database table
