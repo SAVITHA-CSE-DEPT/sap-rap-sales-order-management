@@ -1,0 +1,24 @@
+@EndUserText.label : 'Sales Order Header - 22AD070'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table z22ad070_vbak {
+  key client : abap.clnt not null;
+  key salesdocument : z22ad070_de_sorder not null;
+  salesdocumenttype : abap.char(4);
+  orderreason : abap.char(3);
+  salesorganization : abap.char(4);
+  distributionchannel : abap.char(2);
+  division : abap.char(2);
+  salesoffice : abap.char(4);
+  salesgroup : abap.char(3);
+  @Semantics.amount.currencyCode : 'z22ad070_vbak.currency'
+  netprice : abap.curr(13,2);
+  currency : abap.cuky;
+  local_created_by : abp_creation_user;
+  local_created_at : abp_creation_tstmpl;
+  local_last_changed_by : abp_locinst_lastchange_user;
+  local_last_changed_at : abp_locinst_lastchange_tstmpl;
+  last_changed_at : abp_lastchange_tstmpl;
+}
